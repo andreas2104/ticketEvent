@@ -17,9 +17,7 @@ pub async fn create_user(
     }
 }
 
-pub async fn amboarina(
-    State(repo)
-)
+
 
 pub async fn get_users(
     State(repo): State<Arc<UserRepository>>,

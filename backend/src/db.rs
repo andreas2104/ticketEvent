@@ -39,5 +39,24 @@ pub async fn init_db() -> DbPool {
     .await
     .expect("Failed to create events table");
 
-    pool
+    sqlx::query(
+        "CREATE TABLE IF NOT EXISTS templates (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        image_path TEXT NOT NULL,
+        qr_x: TEXT NOT NULL,
+        qr_y: TEXT NOT NULL,
+        num_x: TEXT NOT NULL,
+        num_y: TEXT NOT NULL,
+        num_width: TEXT NOT NULL,
+        num_height: TEXT NOT NULL,
+        num_padding: TEXT NOT NULL,
+        num_border_radius: TEXT NOT NULL,
+        num_border_color: TEXT NOT NULL,
+        num_border_width: TEXT NOT NULL,
+        num_border_style: TEXT NOT NULL,
+        )",
+    )
+    .execute(&pool)
+    .await
+    .expect("Failed to create templates table");
 }
